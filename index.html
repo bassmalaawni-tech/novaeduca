@@ -1,224 +1,207 @@
 <!DOCTYPE html>
-<html lang="fr" dir="ltr">
+<html lang="fr" dir="ltr" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NOVA — Apprendre. Progresser. Réussir.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body class="light-mode">
+<body>
 
-    <div id="auth-container" class="auth-wrapper">
-        
-        <div id="register-view" class="auth-card-container">
-            <div class="auth-left-banner">
-                <div class="brand-badge"><i class="fa-solid fa-seedling"></i> NOVA</div>
-                <h1>Ta réussite,<br>notre mission !</h1>
-                <p class="slogan-desc" data-i18n="slogan_desc">NOVA t'accompagne dans ton apprentissage, tes activités, tes compétences et tes objectifs scolaires.</p>
-                
-                <div class="illustration-box">
-                    <div class="paper-cut-illustration">
-                        <i class="fa-solid fa-graduation-cap"></i>
-                        <i class="fa-solid fa-book-open"></i>
-                        <i class="fa-solid fa-award"></i>
+    <div id="auth-view" class="auth-container">
+        <div id="register-screen" class="auth-screen active">
+            <div class="auth-split">
+                <div class="auth-left">
+                    <div class="brand-header">
+                        <div class="logo-mark">
+                            <span class="petal p1"></span><span class="petal p2"></span><span class="petal p3"></span><span class="petal p4"></span>
+                        </div>
+                        <h1>NOVA</h1>
+                    </div>
+                    <h2>Ta réussite, notre mission !</h2>
+                    <p class="auth-desc" data-i18n="auth_desc">NOVA t'accompagne dans ton apprentissage, tes activités, tes compétences et tes objectifs scolaires.</p>
+                    <div class="auth-illustration">
+                        <div class="illustration-badge" data-i18n="badge_interactive">✨ Cours interactifs</div>
+                        <div class="illustration-badge" data-i18n="badge_rhythm">🎯 Progrès à ton rythme</div>
+                        <div class="illustration-badge" data-i18n="badge_rewards">🏆 Badges et récompenses</div>
+                    </div>
+                    <blockquote class="auth-quote" data-i18n="auth_quote">« L'éducation est l'arme la plus puissante qu'on puisse utiliser pour changer le monde. » — Nelson Mandela</blockquote>
+                </div>
+                <div class="auth-right">
+                    <div class="top-controls">
+                        <div class="lang-selector">
+                            <select id="global-lang-select" aria-label="Langue">
+                                <option value="fr">🇫🇷 Français</option>
+                                <option value="ar">🇸🇦 العربية</option>
+                                <option value="en">🇬🇧 English</option>
+                            </select>
+                        </div>
+                        <button id="theme-toggle-auth" class="theme-btn" aria-label="Changer de thème">☀️</button>
+                    </div>
+                    <div class="form-wrapper">
+                        <h3 data-i18n="create_account_title">Créer ton compte</h3>
+                        <p class="form-subtitle" data-i18n="create_account_subtitle">Rejoins NOVA et commence ton aventure d'apprentissage !</p>
+                        
+                        <form id="register-form">
+                            <div class="input-grid">
+                                <div class="input-group">
+                                    <label data-i18n="label_nom">Nom</label>
+                                    <input type="text" id="reg-nom" required placeholder="Ex: El Aouny">
+                                </div>
+                                <div class="input-group">
+                                    <label data-i18n="label_prenom">Prénom</label>
+                                    <input type="text" id="reg-prenom" required placeholder="Ex: Amine">
+                                </div>
+                            </div>
+                            <div class="input-grid">
+                                <div class="input-group">
+                                    <label data-i18n="label_age">Âge</label>
+                                    <input type="number" id="reg-age" min="10" max="25" required placeholder="Ex: 14">
+                                </div>
+                                <div class="input-group">
+                                    <label data-i18n="label_role">Je suis</label>
+                                    <select id="reg-role" required>
+                                        <option value="eleve" data-i18n="role_eleve">Élève</option>
+                                        <option value="enseignant" data-i18n="role_enseignant">Enseignant</option>
+                                        <option value="etablissement" data-i18n="role_etablissement">Établissement</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="input-group" id="niveau-scolaire-group">
+                                <label data-i18n="label_niveau">Niveau scolaire</label>
+                                <select id="reg-niveau">
+                                    <option value="1ere_annee" data-i18n="niv_1">1ère année collège</option>
+                                    <option value="2eme_annee" data-i18n="niv_2">2ème année collège</option>
+                                    <option value="3eme_annee" data-i18n="niv_3">3ème année collège</option>
+                                    <option value="lycee" data-i18n="niv_lycee">Lycée</option>
+                                </select>
+                            </div>
+                            <div class="input-group">
+                                <label data-i18n="label_email">Adresse e-mail</label>
+                                <input type="email" id="reg-email" required placeholder="exemple@email.com">
+                            </div>
+                            <div class="input-group">
+                                <label data-i18n="label_code">Code de sécurité (8 chiffres)</label>
+                                <input type="password" id="reg-code" maxlength="8" pattern="\d{8}" required placeholder="••••••••">
+                            </div>
+                            <div class="input-group">
+                                <label data-i18n="label_confirm_code">Confirmer le code (8 chiffres)</label>
+                                <input type="password" id="reg-confirm" maxlength="8" pattern="\d{8}" required placeholder="••••••••">
+                            </div>
+                            <button type="submit" class="btn-primary" data-i18n="btn_create">Créer mon compte</button>
+                        </form>
+                        <p class="auth-switch"><span data-i18n="have_account">Tu as déjà un compte ?</span> <a href="#" id="show-login" data-i18n="link_login">Se connecter</a></p>
                     </div>
                 </div>
-
-                <div class="advantages-list">
-                    <div class="advantage-item"><i class="fa-solid fa-check"></i> <span data-i18n="adv_1">Suivi personnalisé en temps réel</span></div>
-                    <div class="advantage-item"><i class="fa-solid fa-check"></i> <span data-i18n="adv_2">Parcours de français adapté au collège</span></div>
-                    <div class="advantage-item"><i class="fa-solid fa-check"></i> <span data-i18n="adv_3">Badges et récompenses à débloquer</span></div>
-                </div>
-
-                <div class="auth-quote">
-                    « L'éducation est l'arme la plus puissante qu'on puisse utiliser pour changer le monde. »
-                </div>
             </div>
+        </div>
 
-            <div class="auth-right-form">
-                <div class="form-top-bar">
-                    <h2>Créer ton compte</h2>
-                    <div class="lang-switcher-auth">
-                        <select id="global-lang-select">
+        <div id="login-screen" class="auth-screen">
+            <div class="auth-box">
+                <div class="top-controls">
+                    <div class="lang-selector">
+                        <select id="global-lang-select-login" aria-label="Langue">
                             <option value="fr">🇫🇷 Français</option>
                             <option value="ar">🇸🇦 العربية</option>
                             <option value="en">🇬🇧 English</option>
                         </select>
-                        <button id="theme-toggle-auth" title="Changer de mode"><i class="fa-solid fa-moon"></i></button>
                     </div>
+                    <button id="theme-toggle-login" class="theme-btn">☀️</button>
                 </div>
-                <p class="form-subtitle">Rejoins NOVA et commence ton aventure d'apprentissage !</p>
-
-                <form id="register-form">
-                    <div class="form-grid">
-                        <div class="input-group">
-                            <label data-i18n="label_nom">Nom</label>
-                            <input type="text" id="reg-nom" required placeholder="Ex: El Aouny">
-                        </div>
-                        <div class="input-group">
-                            <label data-i18n="label_prenom">Prénom</label>
-                            <input type="text" id="reg-prenom" required placeholder="Ex: Basma">
-                        </div>
+                <div class="brand-header center">
+                    <div class="logo-mark">
+                        <span class="petal p1"></span><span class="petal p2"></span><span class="petal p3"></span><span class="petal p4"></span>
                     </div>
-
-                    <div class="form-grid">
-                        <div class="input-group">
-                            <label data-i18n="label_age">Âge</label>
-                            <input type="number" id="reg-age" min="10" max="25" required placeholder="Ex: 14">
-                        </div>
-                        <div class="input-group">
-                            <label data-i18n="label_role">Je suis</label>
-                            <select id="reg-role" required>
-                                <option value="eleve" data-i18n="role_eleve">Élève</option>
-                                <option value="enseignant" data-i18n="role_enseignant">Enseignant</option>
-                                <option value="etablissement" data-i18n="role_etablissement">Établissement</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="input-group" id="school-level-group">
-                        <label data-i18n="label_niveau">Niveau scolaire</label>
-                        <select id="reg-niveau">
-                            <option value="1ere_annee" data-i18n="lvl_1">1ère année collège</option>
-                            <option value="2eme_annee" data-i18n="lvl_2">2ème année collège</option>
-                            <option value="3eme_annee" data-i18n="lvl_3">3ème année collège</option>
-                            <option value="lycee" data-i18n="lvl_lycee">Lycée</option>
-                        </select>
-                    </div>
-
-                    <div class="input-group">
-                        <label data-i18n="label_email">Adresse e-mail</label>
-                        <input type="email" id="reg-email" required placeholder="exemple@domaine.com">
-                    </div>
-
-                    <div class="form-grid">
-                        <div class="input-group">
-                            <label data-i18n="label_code">Code de sécurité (8 chiffres)</label>
-                            <input type="password" id="reg-code" maxlength="8" required placeholder="12345678">
-                        </div>
-                        <div class="input-group">
-                            <label data-i18n="label_confirm_code">Confirmation du code</label>
-                            <input type="password" id="reg-confirm-code" maxlength="8" required placeholder="12345678">
-                        </div>
-                    </div>
-
-                    <div id="register-error" class="error-msg"></div>
-
-                    <button type="submit" class="btn-primary" data-i18n="btn_create">Créer mon compte</button>
-                    
-                    <div class="auth-switch-link">
-                        <span data-i18n="has_account">Tu as déjà un compte ?</span> <a href="#" id="show-login" data-i18n="link_login">Se connecter</a>
-                    </div>
-                </form>
-            </div>
-        </div>
-
-        <div id="login-view" class="auth-card-container hidden">
-            <div class="auth-left-banner">
-                <div class="brand-badge"><i class="fa-solid fa-seedling"></i> NOVA</div>
-                <h1 data-i18n="login_welcome_back">Content de te revoir !</h1>
-                <p class="slogan-desc" data-i18n="login_desc">Reprends ton parcours là où tu l'as laissé et continue de progresser.</p>
-                <div class="auth-quote">
-                    « Chaque petit pas est une victoire vers le sommet. »
+                    <h1>NOVA</h1>
+                    <p data-i18n="slogan">Apprendre. Progresser. Réussir.</p>
                 </div>
-            </div>
-
-            <div class="auth-right-form">
-                <div class="form-top-bar">
-                    <h2 data-i18n="login_title">Connexion à NOVA</h2>
-                </div>
-                <p class="form-subtitle" data-i18n="login_subtitle">Entre tes identifiants pour accéder à ton espace.</p>
-
+                <h3 data-i18n="login_title">Connexion à ton espace</h3>
                 <form id="login-form">
                     <div class="input-group">
                         <label data-i18n="label_email">Adresse e-mail</label>
-                        <input type="email" id="log-email" required placeholder="exemple@domaine.com">
+                        <input type="email" id="log-email" required placeholder="exemple@email.com">
                     </div>
-
                     <div class="input-group">
                         <label data-i18n="label_code">Code de sécurité (8 chiffres)</label>
-                        <input type="password" id="log-code" maxlength="8" required placeholder="12345678">
+                        <input type="password" id="log-code" maxlength="8" pattern="\d{8}" required placeholder="••••••••">
                     </div>
-
-                    <div id="login-error" class="error-msg"></div>
-
                     <button type="submit" class="btn-primary" data-i18n="btn_login">Se connecter</button>
-
-                    <div class="auth-switch-link">
-                        <span data-i18n="no_account">Pas encore de compte ?</span> <a href="#" id="show-register" data-i18n="link_register">Créer un compte</a>
-                    </div>
                 </form>
+                <p class="auth-switch"><span data-i18n="no_account">Pas encore de compte ?</span> <a href="#" id="show-register" data-i18n="link_register">Créer un compte</a></p>
             </div>
         </div>
     </div>
 
-
-    <div id="app-container" class="app-layout hidden">
-        
-        <aside id="sidebar" class="sidebar">
+    <div id="app-view" class="app-layout hidden">
+        <aside class="sidebar">
             <div class="sidebar-header">
-                <div class="sidebar-logo">
-                    <i class="fa-solid fa-seedling"></i>
-                    <span>NOVA</span>
+                <div class="logo-mark small">
+                    <span class="petal p1"></span><span class="petal p2"></span><span class="petal p3"></span><span class="petal p4"></span>
                 </div>
-                <button id="sidebar-toggle" class="mobile-menu-btn"><i class="fa-solid fa-bars"></i></button>
+                <h2>NOVA</h2>
             </div>
-
-            <div class="user-profile-badge">
-                <div class="avatar-circle" id="sidebar-user-initials">--</div>
-                <div class="user-info-text">
-                    <h4 id="sidebar-user-name">Nom Prénom</h4>
-                    <span id="sidebar-user-role-badge">Élève</span>
+            <div class="user-mini-card">
+                <div class="avatar-circle" id="sidebar-avatar">A</div>
+                <div class="user-info">
+                    <h4 id="sidebar-username">Utilisateur</h4>
+                    <span id="sidebar-role-badge">Élève</span>
                 </div>
             </div>
-
-            <nav class="sidebar-nav" id="sidebar-nav-links">
+            <nav class="sidebar-nav" id="dynamic-nav">
                 </nav>
-
             <div class="sidebar-footer">
-                <button id="logout-btn" class="logout-action"><i class="fa-solid fa-right-from-bracket"></i> <span data-i18n="nav_logout">Déconnexion</span></button>
+                <button id="logout-btn" class="logout-btn" data-i18n="btn_logout">🚪 Déconnexion</button>
             </div>
         </aside>
 
-        <div class="main-content-wrapper">
-            
-            <header class="topbar">
-                <div class="topbar-search">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                    <input type="text" id="global-search-input" placeholder="Rechercher un cours, un badge, une ressource...">
+        <main class="main-content">
+            <header class="app-header">
+                <div class="header-search">
+                    <button id="mobile-menu-toggle" class="mobile-toggle">☰</button>
+                    <h3 id="current-page-title">Accueil</h3>
                 </div>
-                <div class="topbar-actions">
-                    <div class="lang-selector-top">
+                <div class="header-actions">
+                    <div class="lang-selector">
                         <select id="app-lang-select">
                             <option value="fr">🇫🇷 FR</option>
                             <option value="ar">🇸🇦 AR</option>
                             <option value="en">🇬🇧 EN</option>
                         </select>
                     </div>
-                    <button id="theme-toggle-app" class="icon-btn" title="Changer de mode"><i class="fa-solid fa-moon"></i></button>
-                    <div class="topbar-user-pill" id="topbar-user-display">--</div>
+                    <button id="theme-toggle-app" class="theme-btn">☀️</button>
+                    <div class="notification-bell">🔔</div>
                 </div>
             </header>
 
-            <main id="content-viewport" class="content-viewport">
-                </main>
+            <div class="content-body" id="content-body">
+                </div>
+        </main>
+    </div>
+
+    <div id="nova-bot-container" class="bot-drawer hidden">
+        <div class="bot-header">
+            <div class="bot-title">🤖 NOVA Bot (Assistant Pédagogique)</div>
+            <button id="close-bot" class="close-btn">&times;</button>
+        </div>
+        <div class="bot-messages" id="bot-messages">
+            <div class="bot-msg system" data-i18n="bot_welcome">Bonjour ! Je suis ton assistant NOVA. Comment puis-je t'aider dans ton apprentissage aujourd'hui ?</div>
+        </div>
+        <div class="bot-quick-replies">
+            <button class="qr-btn" data-query="leçon" data-i18n="qr_lesson">« Explique-moi cette leçon »</button>
+            <button class="qr-btn" data-query="exercice" data-i18n="qr_exercise">« Aide-moi avec cet exercice »</button>
+            <button class="qr-btn" data-query="programme" data-i18n="qr_plan">« Que dois-je faire aujourd'hui ? »</button>
+            <button class="qr-btn" data-query="ameliorer" data-i18n="qr_improve">« Comment améliorer mon français ? »</button>
+        </div>
+        <div class="bot-input-area">
+            <input type="text" id="bot-input" placeholder="Écris ton message...">
+            <button id="bot-send">➤</button>
         </div>
     </div>
 
-
-    <div id="modal-overlay" class="modal-overlay hidden">
-        <div class="modal-card" id="modal-card-content">
-            </div>
-    </div>
-
-    <div id="toast-notification" class="toast-notification hidden">
-        <div class="toast-icon" id="toast-icon"><i class="fa-solid fa-award"></i></div>
-        <div class="toast-content">
-            <h4 id="toast-title">Badge débloqué !</h4>
-            <p id="toast-message">Tu as accompli une super action.</p>
-        </div>
-    </div>
+    <div id="toast-container"></div>
 
     <script src="script.js"></script>
 </body>
